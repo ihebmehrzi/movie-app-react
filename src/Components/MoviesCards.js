@@ -1,6 +1,6 @@
 import React from 'react';
 import Stars from './Stars';
-
+import HOC from './HOC'
 
 const MovieCards= (props)=>{
     return(
@@ -21,4 +21,4 @@ const MovieCards= (props)=>{
     )
 }
 
-export default MovieCards;
+export default HOC(MovieCards);

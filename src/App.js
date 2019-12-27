@@ -29,8 +29,11 @@ class App extends Component {
         },
       ],
       keyword: "",
-      rating:1
+      rating:1,
+      loading: true
     }
+    setTimeout(() => this.setState({loading: false}), 5000)
+
   }
   Search = text => {
     this.setState({keyword: text})
@@ -52,7 +55,7 @@ class App extends Component {
         <Search search={title => this.Search(title)} />
         <Stars rating={this.state.rating} stars={rating => this.Rating(rating)}/>
         <AddMovie addmovie={movie=>this.addNewmovie(movie)}/>
-        <MovieCards movieList={this.state.movieList.filter(el => el.title.toUpperCase().includes(this.state.keyword.toUpperCase().trim()) && el.rating >= this.state.rating)} />
+        <MovieCards isLoading={this.state.loading} movieList={this.state.movieList.filter(el => el.title.toUpperCase().includes(this.state.keyword.toUpperCase().trim()) && el.rating >= this.state.rating)} />
       </div>
     );
   }
